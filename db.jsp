@@ -1,11 +1,12 @@
-<%@ page import = "java.sql.*, java.util.*, java.io.*" %><%		
+<%@ page import = "java.sql.*, java.util.*, java.io.*, com.mysql.*" %><%
 Connection con=null;
 try {
 Class.forName("com.mysql.jdbc.Driver");
-con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs166db", "cs166db", "Spring2017!");
+con = DriverManager.getConnection("jdbc:mysql://localhost:3306/secure_website", "richard", "faustinosecure123!");
 }
 catch(Exception e) {
-	out.print("Try again");
+	out.print("Try again ");
+	out.print(e);
 	return;
 }
 %>

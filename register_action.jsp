@@ -7,7 +7,7 @@ String pass = request.getParameter( "pass" );
 String sqlStr = "insert into login(fullname,user, pass) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256))";
 Statement stmt = con.createStatement();
 stmt.execute(sqlStr);
-response.sendRedirect("login_form.html"); 
+response.sendRedirect("login_form.html");
 %>
 
 
@@ -25,5 +25,5 @@ stmt.setString(3,pass);
 ResultSet rs = stmt.execute();
 */
 //SQL injection attack
-// a' OR 1=1 -- 
+// a' OR 1=1 --
 %>
