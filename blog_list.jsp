@@ -33,11 +33,15 @@ ResultSet rs = stmt.executeQuery("SELECT title, content from blog");
 				<hr>
 				<h3>Add a blog item</h2>
 				<form  method="post" action="blog_action.jsp">
-				Blog Title: <input name="blogtitle" size=100/><br>
-				<textarea name="blogcontent" rows="10" cols="100"></textarea><br>
-				<input type="submit" value="Add Blog"/>
+					Blog Title:
+					<input class="form-control" name="blogtitle" size=100/>
+					<br>
 
-				<input type="hidden" name="csrftoken" value=<% out.print(csrf); %>
+					<textarea class="form-control" name="blogcontent" rows="10" cols="100"></textarea>
+					<br>
+
+					<input class="btn btn-primary" type="submit" value="Add Blog"/>
+					<input type="hidden" name="csrftoken" value=<% out.print(csrf); %>
 				</form>
 			</div>
 		</div>
