@@ -1,0 +1,22 @@
+.secure-footer{
+	background-color: #4266b2;
+	padding: 30px;
+}
+
+.secure-footer a{
+  color: white;
+}
+
+#secure-navbar{
+  background-color: #4266b2;
+  border: 0;
+  border-radius: 0;
+}
+
+#secure-navbar a{
+  color: white;
+}
+.fa-lock{
+  margin-right: 5px;
+  color: white;
+}

@@ -38,6 +38,6 @@ if ( rs.getInt(1) == 1 ) isAuth=true;
 */
 
 //SQL injection attack
-// a ' OR '1'='1' -- 
+// a ' OR '1'='1' --
 
 %>
