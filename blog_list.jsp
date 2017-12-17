@@ -3,23 +3,22 @@
 String user = (String) session.getAttribute( "user" );
 String username = (String) session.getAttribute( "username" );
 if (null == user) {
-	response.sendRedirect("index.jsp"); 
+	response.sendRedirect("index.jsp");
 }
 
 //Check user
 Statement stmt = con.createStatement();
 ResultSet rs = stmt.executeQuery("SELECT title, content from blog");
 %>
-<html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
+
+<jsp:include page="navbar.jsp"/>
+
 <body>
 <h1>My CS166 Blog Site <span style="float:right"> Welcome <%= username %> &nbsp;&nbsp;&nbsp;&nbsp;<a href="logout_action.jsp">logout</a> &nbsp;&nbsp;&nbsp;&nbsp;</span></h1>
 
 <hr>
 <h1>Blog entries</h1>
-<%	
+<%
 while ( rs.next() ) {
 	out.print("<div class='blogitem'><h3>" + rs.getString(1) + "</h3>");
 	out.print(rs.getString(2) + "</div>");
@@ -53,6 +52,8 @@ if ( rs.getInt(1) == 1 ) isAuth=true;
 */
 
 //SQL injection attack
-// a ' OR '1'='1' -- 
+// a ' OR '1'='1' --
 
 %>
+
+<jsp:include page="footer.jsp"/>
