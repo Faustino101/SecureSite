@@ -13,7 +13,7 @@ if( fullname.length() < 1 || user.length() < 1 || pass.length() < 8 ){
   String sqlStr = "insert into login(fullname,user, pass) values ('" + fullname + "', '" + user + "', sha2('"+ pass + "', 256))";
   Statement stmt = con.createStatement();
   stmt.execute(sqlStr);
-  response.sendRedirect("login_form.html");
+  response.sendRedirect("login_form.jsp");
 }
 
 %>

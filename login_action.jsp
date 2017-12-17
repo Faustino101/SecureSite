@@ -17,7 +17,7 @@ if ( rs.next() ) {
 	session.setAttribute( "user", user );
 	session.setAttribute( "username", rs.getString(1) );
 	session.setMaxInactiveInterval(60*20);
-	response.sendRedirect("blog_list.jsp");	
+	response.sendRedirect("blog_list.jsp");
 } else {
 	response.sendRedirect("login_form.html");
 }
