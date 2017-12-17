@@ -19,7 +19,7 @@ if ( rs.next() ) {
 	session.setMaxInactiveInterval(60*20);
 	response.sendRedirect("blog_list.jsp");
 } else {
-	response.sendRedirect("login_form.html");
+	response.sendRedirect("login_form.jsp");
 }
 %>
 

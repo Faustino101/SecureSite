@@ -35,12 +35,12 @@
 
 <jsp:include page="footer.jsp" />
 
-<!-- Javascript to ensure that a minimum password is entered -->
+<!-- Javascript with jquery ($) to ensure that a minimum password is entered -->
 <script>
   $("form").submit(function(e){
     if( !checkPasswordLength($("#pass").val()) ){
       alert("Your password must be 8 characters minumum. Our web app only supports strong and secure passwords");
-      e.preventDefault();
+      e.preventDefault(); // So form does not submit and try to create account
     }
   });
 

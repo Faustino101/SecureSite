@@ -1,8 +1,10 @@
 <head>
   <!-- Putting imports here so we can use throughout the entire application -->
   <title> SecureBook </title>
-  <!-- Importing Jquery Javascript -->
+  <!-- Allow for mobile view -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Importing Jquery Javascript :: Included sha256 for security -->
   <script
     src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

@@ -14,28 +14,34 @@ ResultSet rs = stmt.executeQuery("SELECT title, content from blog");
 <jsp:include page="navbar.jsp"/>
 
 <body>
-<h1>My CS166 Blog Site <span style="float:right"> Welcome <%= username %> &nbsp;&nbsp;&nbsp;&nbsp;<a href="logout_action.jsp">logout</a> &nbsp;&nbsp;&nbsp;&nbsp;</span></h1>
+	<div class="container">
+	  <div class="row">
+			<div class="col-xs-12">
+				<h1>My CS166 Blog Site <span style="float:right"> Welcome <%= username %> &nbsp;&nbsp;&nbsp;&nbsp;<a href="logout_action.jsp">logout</a> &nbsp;&nbsp;&nbsp;&nbsp;</span></h1>
 
-<hr>
-<h1>Blog entries</h1>
-<%
-while ( rs.next() ) {
-	out.print("<div class='blogitem'><h3>" + rs.getString(1) + "</h3>");
-	out.print(rs.getString(2) + "</div>");
-}
+				<hr>
+				<h1>Blog entries</h1>
+				<%
+				while ( rs.next() ) {
+					out.print("<div class='blogitem'><h3>" + rs.getString(1) + "</h3>");
+					out.print(rs.getString(2) + "</div>");
+				}
 
-String csrf = "" + System.currentTimeMillis() + Math.random() * 10000000;
-session.setAttribute("csrf", csrf);
-%>
-<hr>
-<h3>Add a blog item</h2>
-<form  method="post" action="blog_action.jsp">
-Blog Title: <input name="blogtitle" size=100/><br>
-<textarea name="blogcontent" rows="10" cols="100"></textarea><br>
-<input type="submit" value="Add Blog"/>
+				String csrf = "" + System.currentTimeMillis() + Math.random() * 10000000;
+				session.setAttribute("csrf", csrf);
+				%>
+				<hr>
+				<h3>Add a blog item</h2>
+				<form  method="post" action="blog_action.jsp">
+				Blog Title: <input name="blogtitle" size=100/><br>
+				<textarea name="blogcontent" rows="10" cols="100"></textarea><br>
+				<input type="submit" value="Add Blog"/>
 
-<input type="hidden" name="csrftoken" value=<% out.print(csrf); %>
-</form>
+				<input type="hidden" name="csrftoken" value=<% out.print(csrf); %>
+				</form>
+			</div>
+		</div>
+	</div>
 
 
 
