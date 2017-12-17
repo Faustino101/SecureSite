@@ -3,7 +3,7 @@
 String user = (String) session.getAttribute( "user" );
 String username = (String) session.getAttribute( "username" );
 if (null == user) {
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("login_form.jsp");
 }
 
 //Check user
@@ -34,10 +34,11 @@ ResultSet rs = stmt.executeQuery("SELECT title, content from blog");
 				<h3>Add a blog item</h2>
 				<form  method="post" action="blog_action.jsp">
 					Blog Title:
-					<input class="form-control" name="blogtitle" size=100/>
+					<!-- Adding required true to the input fields -->
+					<input class="form-control" name="blogtitle" size=100 required="true"/>
 					<br>
 
-					<textarea class="form-control" name="blogcontent" rows="10" cols="100"></textarea>
+					<textarea class="form-control" name="blogcontent" rows="10" cols="100" required="true"></textarea>
 					<br>
 
 					<input class="btn btn-primary" type="submit" value="Add Blog"/>
