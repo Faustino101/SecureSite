@@ -1,4 +1,5 @@
 <%@include file="db.jsp" %>
+<%@include file="current_user.jsp" %>
 
 <%
 // Get the title and content from the Form in blog_list
@@ -10,16 +11,17 @@ String formCsrf = request.getParameter("csrftoken").toString();
 String sessionCsrf = (String) session.getAttribute("csrf").toString();
 // Ensure CSRF cookie matches with the CSRF in the HTML form
 // and esnure that title and content are not blank.
-if( title.length() == 0 || content.length() == 0 || sessionCsrf == null || !sessionCsrf.equals(formCsrf) ){
+if(user_id == null || title.length() == 0 || content.length() == 0 || sessionCsrf == null || !sessionCsrf.equals(formCsrf) ){
   // Title/content are blank or CSRF did not match... Someone is being malicious!
-  session.setAttribute("error",formCsrf);
+  session.setAttribute("error","Blog posting did not work... Hmm we are looking into this now");
   response.sendRedirect("blog_list.jsp");
 } else {
   // Prepare statements to prevent SQL injection
-  String sqlStr = "insert into blog(title, content) values (?, ?)";
-  PreparedStatement stmt = con.prepareStatement(sqlStr);
+  sqlStr = "insert into blog(title, content, user_id) values (?, ?, ?)";
+  stmt = con.prepareStatement(sqlStr);
   stmt.setString(1, title);
   stmt.setString(2, content);
+  stmt.setString(3, user_id);
   stmt.executeUpdate();
   response.sendRedirect("blog_list.jsp");
 }

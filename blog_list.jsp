@@ -1,13 +1,15 @@
-<%@include file="db.jsp" %><%
+<%@include file="db.jsp" %>
+<%@include file="current_user.jsp" %>
 
+<%
 	String user = (String) session.getAttribute( "user" );
 	String username = (String) session.getAttribute( "username" );
 	if (null == user) {
 		response.sendRedirect("login_form.jsp");
 	}
 	//Check user
-	Statement stmt = con.createStatement();
-	ResultSet rs = stmt.executeQuery("SELECT title, content, created_at, id from blog ORDER BY created_at DESC");
+	Statement st = con.createStatement();
+	ResultSet results = st.executeQuery("SELECT title, content, created_at, id, user_id from blog ORDER BY created_at DESC");
 %>
 <jsp:include page="navbar.jsp"/>
 
@@ -38,9 +40,15 @@
 
 				<!-- Blog Feed -->
 				<%
-					while ( rs.next() ) {
-						out.print("<div class='feed-item'><h5><a href='blog_item.jsp?id=" + rs.getString(4) + "'>" + rs.getString(1) + "</a></h5>");
-						out.print(rs.getString(2) + "</div>");
+					while ( results.next() ) {
+						String blog_id = results.getString(4);
+						out.print("<div id='blog_" + blog_id + "' class='feed-item'><h5><a href='blog_item.jsp?id=" + blog_id + "'>" + results.getString(1) + "</a></h5>");
+						out.print(results.getString(2));
+						if( results.getString(5).equals(user_id) || is_admin){
+							out.print("<hr>");
+							out.print("<i class='delete fa fa-trash' data-id='" + results.getString(4) + "'></i>");
+						}
+						out.print("</div>");
 					}
 				%>
 				<hr>
@@ -48,38 +56,6 @@
 		</div>
 
 	</div>
-<%
-
-//Correct
-
-/*
-
-String sqlStr = "SELECT count(*) FROM login WHERE user=? and pass = sha2(?, 256)";
-
-PreparedStatement stmt = con.prepareStatement(sqlStr);
-
-stmt.setString(1,name);
-
-stmt.setString(2,pwd);
-
-ResultSet rs = stmt.executeQuery();
-
-rs.next();
-
-if ( rs.getInt(1) == 1 ) isAuth=true;
-
-*/
-
-
-
-//SQL injection attack
-
-// a ' OR '1'='1' --
-
-
-
-%>
-
-
 
 <jsp:include page="footer.jsp"/>
+<script src="delete_item.js"></script>

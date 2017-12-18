@@ -23,8 +23,8 @@
         <%
 
           while ( rs.next() ) {
-            out.print("<div class='feed-item'><h5>" + rs.getString(1) + "</h5>");
-            out.print(rs.getString(2) + "</div>");
+            out.print("<div class='feed-item'><h5>" + rs.getString(3) + "</h5>");
+            out.print(rs.getString(4) + "</div>");
           }
         %>
       </div>

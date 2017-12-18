@@ -30,3 +30,7 @@
   margin-right: 5px;
   color: white;
 }
+.fa-trash{
+  cursor: pointer;
+  cursor: hand;
+}
