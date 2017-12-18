@@ -20,6 +20,8 @@
   <script src="https://use.fontawesome.com/6dada7126a.js"></script>
 
   <link href="custom_styles.css" rel="stylesheet">
+  <!-- Captcha -->
+  <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <nav class="navbar navbar-default" id="secure-navbar">

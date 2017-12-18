@@ -18,6 +18,7 @@
           <input class="form-control" name="pass" type="password" required="true" id="pass" />
           <br>
 
+          <div class="g-recaptcha" data-sitekey="6LdKaj0UAAAAAICmpRxtPc4BnD-9LQ_LWzN22jqL"></div>
           <input class="btn btn-primary" type="submit" value="Register"/>
         </form>
 
@@ -38,6 +39,13 @@
 <!-- Javascript with jquery ($) to ensure that a minimum password is entered -->
 <script>
   $("form").submit(function(e){
+    var response = grecaptcha.getResponse();
+
+    if(response.length == 0){
+      alert("captcha needs to be passed");
+      e.preventDefault();
+      return false;
+    }
     if( !checkPasswordLength($("#pass").val()) ){
       alert("Your password must be 8 characters minumum. Our web app only supports strong and secure passwords");
       e.preventDefault(); // So form does not submit and try to create account
