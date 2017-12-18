@@ -9,6 +9,11 @@ String content = request.getParameter("blogcontent");
 String formCsrf = request.getParameter("csrftoken").toString();
 // Get the CSRF from the Cookies
 String sessionCsrf = (String) session.getAttribute("csrf").toString();
+
+//  PREVENT XSS - Do more, but for now allow HTML for blog post and make sure scripts do not work...
+title = title.replace("<script","");
+content = content.replace("<script","");
+
 // Ensure CSRF cookie matches with the CSRF in the HTML form
 // and esnure that title and content are not blank.
 if(user_id == null || title.length() == 0 || content.length() == 0 || sessionCsrf == null || !sessionCsrf.equals(formCsrf) ){
