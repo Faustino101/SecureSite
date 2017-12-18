@@ -6,6 +6,12 @@
       <div class="col-sm-6">
         <!-- Start of Form -->
         <form action="register_action.jsp">
+          <%
+            // Create CSRF token here...
+            String csrf = "" + System.currentTimeMillis() + Math.random() * 10000000;
+            session.setAttribute("csrf", csrf);
+          %>
+          <input type="hidden" name="csrftoken" value=<% out.print(csrf); %> />
           <label>Your Name:</label>
           <input class="form-control" name="fullname" required="true" />
           <br>
