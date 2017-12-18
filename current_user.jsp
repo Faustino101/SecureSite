@@ -1,4 +1,6 @@
 <%
+  // Small utility function to get the current user logged in, will not save the ID as a cookie
+  // Alternative to saving ID's/sensitive data in cookies/sessions.
   String user_id = null;
   boolean is_admin = false;
   String sess_user = (String) session.getAttribute( "user" );

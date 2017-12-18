@@ -21,8 +21,6 @@ if ( rs.getInt(1) == 1 ){
 	session.setAttribute("error", "Invalid credentials!");
 	response.sendRedirect("login_form.jsp");
 }
-//Statement stmt = con.createStatement();
-//ResultSet rs = stmt.executeQuery(sqlStr);
 %>
 
 
