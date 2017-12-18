@@ -1,3 +1,11 @@
+.feed-item{
+  background-color: white;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #dddfe2;
+  border-radius: 2px;
+}
+
 .secure-footer{
   margin-top: 10px;
 	background-color: #4266b2;
