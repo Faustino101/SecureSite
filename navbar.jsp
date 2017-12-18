@@ -32,7 +32,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand"> <i class="fa fa-lock"></i> SecureBook </a>
+      <a class="navbar-brand" href="blog_list.jsp"> <i class="fa fa-lock"></i> SecureBook </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

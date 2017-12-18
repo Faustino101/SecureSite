@@ -7,7 +7,7 @@
 	}
 	//Check user
 	Statement stmt = con.createStatement();
-	ResultSet rs = stmt.executeQuery("SELECT title, content, created_at from blog ORDER BY created_at DESC");
+	ResultSet rs = stmt.executeQuery("SELECT title, content, created_at, id from blog ORDER BY created_at DESC");
 %>
 <jsp:include page="navbar.jsp"/>
 
@@ -39,7 +39,7 @@
 				<!-- Blog Feed -->
 				<%
 					while ( rs.next() ) {
-						out.print("<div class='feed-item'><h5>" + rs.getString(1) + "</h5>");
+						out.print("<div class='feed-item'><h5><a href='blog_item.jsp?id=" + rs.getString(4) + "'>" + rs.getString(1) + "</a></h5>");
 						out.print(rs.getString(2) + "</div>");
 					}
 				%>
