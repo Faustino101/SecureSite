@@ -3,7 +3,7 @@ $(".delete").click(function(){
   if(c  == true)
   {
     var blog_id = $(this).data("id");
-    $.post( "delete_item.jsp", { id: blog_id })
+    $.post( "delete_item.jsp", { id: blog_id, csrf: $("#csrf").val() })
       .done(function( data ) {
         $("#blog_" + blog_id).fadeOut(1000, function() { $(this).remove(); });
     });

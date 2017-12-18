@@ -28,7 +28,7 @@
 							session.setAttribute("csrf", csrf);
 						%>
 						<jsp:include page="error.jsp"/>
-						<input type="hidden" name="csrftoken" value=<% out.print(csrf); %>
+						<input id="csrf" type="hidden" name="csrftoken" value=<% out.print(csrf); %> />
 						<!-- Adding required true to the input fields -->
 						<input class="form-control" name="blogtitle" size=100 required="true" placeholder="Blog title"/>
 						<br>
